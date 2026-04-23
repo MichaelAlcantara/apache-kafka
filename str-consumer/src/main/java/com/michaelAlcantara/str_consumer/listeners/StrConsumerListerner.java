@@ -11,8 +11,18 @@ public class StrConsumerListerner {
     private static final Logger log = LogManager.getLogger(StrConsumerListerner.class);	
 
 	@KafkaListener(groupId = "group-1", topics = "str-topic", containerFactory = "strContainerFactory")
-	public void listener(String message) {
-		log.info("Receive message {}", message);
+	public void create(String message) {
+		log.info("CREATE ::: Receive message {}", message);
+	}
+	
+	@KafkaListener(groupId = "group-1", topics = "str-topic", containerFactory = "strContainerFactory")
+	public void log(String message) {
+		log.info("LOG ::: Receive message {}", message);
+	}
+	
+	@KafkaListener(groupId = "group-2", topics = "str-topic", containerFactory = "strContainerFactory")
+	public void groupTwo(String message) {
+		log.info("groupTwo ::: Receive message {}", message);
 	}
 
 }
