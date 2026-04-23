@@ -15,6 +15,7 @@ public class StringProducerService {
     private static final Logger log = LogManager.getLogger(StringProducerService.class);
 
     public void sendMessage(String message) {
+    	log.info("Send message {}", message);
         kafkaTemplate.send("str-topic", message).addCallback(
                 success -> {
                 	if(success != null) {
