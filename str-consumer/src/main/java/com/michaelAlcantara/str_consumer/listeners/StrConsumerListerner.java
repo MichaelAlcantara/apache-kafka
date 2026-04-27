@@ -15,6 +15,7 @@ public class StrConsumerListerner {
 	@StrConsumerCustomListener(groupId = "group-1")
 	public void create(String message) {
 		log.info("CREATE ::: Receive message {}", message);
+		//throw new IllegalAccessError("ERROR");
 	}
 	
 	@StrConsumerCustomListener(groupId = "group-1")
