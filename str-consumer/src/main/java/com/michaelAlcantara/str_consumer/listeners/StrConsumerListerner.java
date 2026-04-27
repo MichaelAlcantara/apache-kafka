@@ -3,7 +3,6 @@ package com.michaelAlcantara.str_consumer.listeners;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.annotation.TopicPartition;
 import org.springframework.stereotype.Component;
 
 import com.michaelAlcantara.str_consumer.custom.StrConsumerCustomListener;
@@ -23,7 +22,7 @@ public class StrConsumerListerner {
 		log.info("LOG ::: Receive message {}", message);
 	}
 	
-	@StrConsumerCustomListener(groupId = "group-2")
+	@KafkaListener(groupId = "group-2", containerFactory = "validMessageContainerFactory", topics = "str-topic")
 	public void groupTwo(String message) {
 		log.info("groupTwo ::: Receive message {}", message);
 	}
